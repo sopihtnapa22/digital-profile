@@ -18,54 +18,60 @@ const activityData = {
     },
 };
 
-export default function ActivityDetailPage(
-    { params }: { params: { slug: string } }
-) {
-    const activity = activityData[params.slug as keyof typeof activityData];
-
-    if (!activity) {
-        return <div className="text-white">Activity not found</div>;
-    }
+export default async function ActivityPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
 
     return (
-        <main className="min-h-screen bg-[#0a0a0c] text-white">
-            <Navbar />
-
-            <section className="px-6 lg:px-20 py-20">
-
-
-                <h1 className="text-4xl font-bold mb-6">
-                    {activity.title}
-                </h1>
-
-                {/* รูปแรก */}
-                {activity.image && (
-                    <Image
-                        src={activity.image}
-                        alt={activity.title}
-                        width={800}
-                        height={500}
-                        className="rounded-xl mb-8 w-full max-w-md mx-auto"
-                    />
-                )}
-
-                <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-                    {activity.description}
-                </p>
-
-                {/* รูปที่สอง */}
-                {activity.image2 && (
-                    <Image
-                        src={activity.image2}
-                        alt="Activity image 2"
-                        width={800}
-                        height={500}
-                        className="rounded-xl w-full max-w-md mx-auto"
-                    />
-                )}
-            </section>
-
-        </main>
+        <div>
+            {slug}
+        </div>
     );
+}
+
+
+return (
+    <main className="min-h-screen bg-[#0a0a0c] text-white">
+        <Navbar />
+
+        <section className="px-6 lg:px-20 py-20">
+
+
+            <h1 className="text-4xl font-bold mb-6">
+                {activity.title}
+            </h1>
+
+            {/* รูปแรก */}
+            {activity.image && (
+                <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    width={800}
+                    height={500}
+                    className="rounded-xl mb-8 w-full max-w-md mx-auto"
+                />
+            )}
+
+            <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+                {activity.description}
+            </p>
+
+            {/* รูปที่สอง */}
+            {activity.image2 && (
+                <Image
+                    src={activity.image2}
+                    alt="Activity image 2"
+                    width={800}
+                    height={500}
+                    className="rounded-xl w-full max-w-md mx-auto"
+                />
+            )}
+        </section>
+
+    </main>
+);
 
 }
