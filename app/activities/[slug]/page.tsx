@@ -18,17 +18,17 @@ const activities: Record<string, Activity> = {
     },
 };
 
-export default async function ActivityPage({
+export default async function ProjectDetailPage({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
 
-    const activity = activities[slug];
+    const project = projectData[slug];
 
-    if (!activity) {
-        return <div className="p-10 text-white">Activity not found</div>;
+    if (!project) {
+        return <div className="p-10 text-white">Project not found</div>;
     }
 
     return (
