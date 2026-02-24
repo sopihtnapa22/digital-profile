@@ -8,14 +8,21 @@ type Activity = {
     image2?: string;
 };
 
-const activities: Record<string, Activity> = {
+const projectData: Record<string, Activity> = {
     seminar: {
         title: "Coding Care ใส่ใจน้องด้วยเทคโนโลยี",
         description:
             "อีกหนึ่งประสบการณ์ดีๆ ที่นักศึกษาชั้นปี 3 สาขาวิชาวิทยาการคอมพิวเตอร์ ได้มอบความรู้และรอยยิ้มให้น้องๆ ชั้นมัธยมศึกษา ปีที่ 1-3 ณ โรงเรียนบ้านกระเบื้องใหญ่ อ.พิมาย จ.นครราชสีมา",
-        image: "/images/pigt1.jpg",
-        image2: "/images/pigt2.jpg",
+        image: "/images/pigt3.jpg",
+        image2: "/images/pigt6.jpg",
     },
+    openhouse: {
+        title: "กิจกรรม open house",
+        description:
+            "กิจกรรมเปิดบ้านวิชาการ (Open House) ของสาขาวิชาวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และศิลปศาสตร์ มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน เป็นการเปิดโอกาสให้นักเรียน นักศึกษา และบุคคลทั่วไปที่สนใจด้านเทคโนโลยีได้เข้ามาสัมผัสบรรยากาศการเรียนการสอนจริง ภายในงานมีการจัดแสดงผลงานนวัตกรรมจากนักศึกษา (Senior Projects) การแนะนำหลักสูตรการเรียนในยุคดิจิทัล และกิจกรรม Workshop ด้านการเขียนโปรแกรมและการพัฒนาซอฟต์แวร์ เพื่อสร้างแรงบันดาลใจในการก้าวเข้าสู่เส้นทางสายอาชีพด้าน IT",
+        image: "/images/pigt1.jpg",
+        image2: "/images/pigt5.jpg",
+    }
 };
 
 export default async function ProjectDetailPage({
@@ -37,13 +44,13 @@ export default async function ProjectDetailPage({
 
             <section className="px-6 lg:px-20 py-20">
                 <h1 className="text-4xl font-bold mb-6">
-                    {activity.title}
+                    {project.title}
                 </h1>
 
-                {activity.image && (
+                {project.image && (
                     <Image
-                        src={activity.image}
-                        alt={activity.title}
+                        src={project.image}
+                        alt={project.title}
                         width={800}
                         height={500}
                         className="rounded-xl mb-8 w-full max-w-md mx-auto"
@@ -51,12 +58,12 @@ export default async function ProjectDetailPage({
                 )}
 
                 <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-                    {activity.description}
+                    {project.description}
                 </p>
 
-                {activity.image2 && (
+                {project.image2 && (
                     <Image
-                        src={activity.image2}
+                        src={project.image2}
                         alt="Activity image 2"
                         width={800}
                         height={500}

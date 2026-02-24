@@ -1,6 +1,8 @@
 import Navbar from "../../components/Navbar";
 import Image from "next/image";
-const projectData = {
+
+// แก้จุดนี้: เพิ่ม Type เพื่อให้ TypeScript ยอมรับการดึงข้อมูลด้วย slug (string)
+const projectData: Record<string, { title: string; description: string; images: string[] }> = {
     ecommerce: {
         title: "E-commerce Website",
         description: "เว็บไซต์นี้เป็นระบบร้านค้าออนไลน์สำหรับจำหน่ายสบู่แฮนด์เมด โดยพัฒนาด้วย Next.js และเชื่อมต่อฐานข้อมูลผ่าน Supabase เพื่อรองรับการจัดการข้อมูลผู้ใช้และคำสั่งซื้ออย่างมีประสิทธิภาพระบบประกอบด้วยหน้าหลักสำหรับแสดงข้อมูลแบรนด์และสินค้า หน้ารวมสินค้าและรายละเอียดสินค้า ระบบตะกร้าสินค้า ระบบสมัครสมาชิกและเข้าสู่ระบบ รวมถึงระบบบันทึกและแสดงประวัติการสั่งซื้อของผู้ใช้งาน้ใช้สามารถสมัครสมาชิก เข้าสู่ระบบ เลือกสินค้า เพิ่มลงตะกร้า และทำรายการสั่งซื้อได้อย่างสะดวก ขณะที่ระบบฐานข้อมูลจะจัดเก็บข้อมูลผู้ใช้ สินค้า และคำสั่งซื้ออย่างเป็นระบบ เพื่อให้สามารถตรวจสอบและจัดการข้อมูลได้อย่างถูกต้องเว็บไซต์นี้ถูกออกแบบให้ใช้งานง่าย มีความเรียบง่าย ทันสมัย และเหมาะกับการจำหน่ายสินค้าออนไลน์ในปัจจุบัน",
@@ -20,11 +22,19 @@ const projectData = {
     },
 };
 
-export default function ProjectDetailPage({ params }) {
-    const project = projectData[params.slug];
+export default async function ProjectDetailPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    // ดึงค่า slug ออกมาด้วย await ตามมาตรฐาน Next.js 15
+    const { slug } = await params;
+
+    // ตอนนี้บรรทัดนี้จะไม่ Error แล้วครับ เพราะเราใส่ Record ไว้ข้างบน
+    const project = projectData[slug as keyof typeof projectData];
 
     if (!project) {
-        return <div className="text-white">Project not found</div>;
+        return <div className="p-10 text-white text-center">Project not found</div>;
     }
 
     return (

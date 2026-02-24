@@ -1,3 +1,4 @@
+// @ts-expect-error: TypeScript cannot find the module declarations for CSS in some environments
 import "./globals.css";
 import { Manrope } from "next/font/google";
 

@@ -85,7 +85,7 @@ export default function AboutPage() {
 
                             <div className="flex items-center gap-3">
                                 <Database className="text-violet-500" />
-                                <span>Database: MySQL,MongoDB, Supabase</span>
+                                <span>Database: MySQL,MongoDB, Supabase , firebase</span>
                             </div>
 
                         </div>

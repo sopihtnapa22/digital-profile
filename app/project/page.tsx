@@ -3,6 +3,8 @@
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 
+
+
 export default function ProjectPage() {
     return (
         <main className="min-h-screen bg-[#0a0a0c] text-[#f6f6f8] overflow-hidden">
